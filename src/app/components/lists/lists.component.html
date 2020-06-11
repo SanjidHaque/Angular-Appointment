@@ -1,1 +1,100 @@
-<p>lists works!</p>
+<div class="row">
+  <div class="col-xl-12" style="text-align: center; font-weight: 500;">
+
+    Appointment lists
+
+  </div>
+</div>
+
+<br>
+
+<div class="row">
+  <div class="offset-xl-3 col-xl-6">
+
+    <div *ngIf="appointments.length > 0; else appointmentsDontExist">
+
+      <div class="row"
+           style="
+           font-weight: 500;
+           border-bottom: 1px solid #cacaca;
+           padding-top: 10px;
+           padding-bottom: 10px;"
+           *ngFor="let appointment of appointments">
+        <div class="col-xl-12">
+
+
+          <div class="row">
+            <div class="col-xl-12">
+
+              Name: {{ appointment.FirstName }} {{ appointment.LastName }}
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xl-12">
+
+              Age: {{ appointment.Age }}
+
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-xl-12">
+
+              Date and Time: {{ appointment.Date }} in {{ appointment.TimeSlot }}
+
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-xl-12">
+
+              Email: {{ appointment.Email }}
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xl-12">
+
+              Phone: {{ appointment.PhoneNumber }}
+
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xl-12">
+
+              Address: {{ appointment.Address }}
+
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+
+
+
+
+  </div>
+</div>
+
+<ng-template #appointmentsDontExist>
+
+  <div class="row">
+    <div class="col-xl-12" style="text-align: center; font-weight: 500; opacity: .7">
+
+      No appointment exists
+
+    </div>
+  </div>
+
+
+
+</ng-template>

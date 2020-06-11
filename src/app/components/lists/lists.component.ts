@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Appointment} from '../../models/appointment.model';
+import {AppointmentService} from '../../services/appointment.service';
 
 @Component({
   selector: 'app-lists',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lists.component.css']
 })
 export class ListsComponent implements OnInit {
+  appointments: Appointment[] = [];
 
-  constructor() { }
+  constructor(private appointmentService: AppointmentService) { }
 
   ngOnInit() {
+    this.appointments = this.appointmentService.getAllAppointments();
   }
 
 }
