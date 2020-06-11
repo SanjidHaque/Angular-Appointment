@@ -1,0 +1,19 @@
+.active{
+  color: #ff3750;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}
+
+a.active.nav-item.nav-link{
+  color: indigo;
+}
+
+a.nav-item.nav-link:hover{
+  color: indigo;
+  border-color: transparent;
+  background-color: transparent;
+}

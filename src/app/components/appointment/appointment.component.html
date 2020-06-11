@@ -1,0 +1,171 @@
+<div class="row">
+  <div class="col-xl-12" style="text-align: center; font-weight: 500;">
+
+    Its easy to create an appointment
+
+  </div>
+</div>
+
+<br>
+<form
+  [formGroup]="addNewAppointmentForm"
+  #form="ngForm">
+
+<div class="row">
+  <div class="offset-xl-3 col-xl-6">
+
+
+    <div class="row">
+
+      <div class="col-xl-6">
+        <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input
+            formControlName="firstName"
+            required
+            matInput>
+          <mat-error>You must enter a name!</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-xl-6">
+        <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input
+            formControlName="lastName"
+            required
+            matInput>
+          <mat-error>You must enter a name!</mat-error>
+        </mat-form-field>
+      </div>
+
+    </div>
+
+
+    <div class="row">
+
+      <div class="col-xl-8">
+        <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Email</mat-label>
+          <input
+            formControlName="email"
+            required
+            matInput>
+          <mat-error>You must enter a email!</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-xl-4">
+        <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Phone Number</mat-label>
+          <input
+            formControlName="phoneNumber"
+            required
+            matInput>
+          <mat-error>You must enter a phone number!</mat-error>
+        </mat-form-field>
+      </div>
+
+    </div>
+
+
+    <div class="row" style="padding-top: 12px;">
+
+      <div class="col-xl-8">
+        <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Address</mat-label>
+          <input
+            formControlName="address"
+            required
+            matInput>
+          <mat-error>You must enter your address!</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-xl-4">
+        <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Age</mat-label>
+          <input
+            type="number"
+            formControlName="age"
+            required
+            matInput>
+          <mat-error>You must enter your age!</mat-error>
+        </mat-form-field>
+      </div>
+
+    </div>
+
+
+
+    <div class="row">
+
+      <div class="col-xl-6">
+        <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Date</mat-label>
+          <input
+            (dateChange)="filterFreeTimeSlots($event)"
+            formControlName = "date"
+            matInput
+            [min]="minDate"
+            [matDatepicker]="picker"
+            required
+            readonly
+            [min]="minDate"
+            (click)="picker.open()"
+          >
+          <mat-error>You must enter a date!</mat-error>
+          <mat-datepicker-toggle
+            matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker
+            #picker
+          ></mat-datepicker>
+        </mat-form-field>
+
+      </div>
+
+      <div class="col-xl-6">
+
+        <mat-form-field style="width: 100%;" appearance="outline">
+          <mat-label>Pick a time</mat-label>
+          <mat-select
+            required
+            formControlName="timeSlot">
+            <mat-option *ngIf = "timeSlots.length === 0">
+              No time slot is available
+            </mat-option>
+            <mat-option *ngFor = "let timeSlot of timeSlots"
+                        [value] = "timeSlot.Time"> {{ timeSlot.Time }}
+            </mat-option>
+          </mat-select>
+          <mat-error>You must select a time slot!</mat-error>
+        </mat-form-field>
+
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-xl-12" style="text-align: right;">
+        <button
+          (click)="addNewAppointment()"
+          [disabled]="form.invalid"
+          style="outline: 0"
+          mat-flat-button
+          color="warn"
+          type="button">
+          Save
+        </button>
+        <button
+          (click)="reset()"
+          style="outline: 0"
+          mat-flat-button
+          type="button">
+          Reset
+        </button>
+      </div>
+    </div>
+
+
+  </div>
+</div>
